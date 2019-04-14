@@ -18,7 +18,7 @@ public class PublicBen {
 	
 	private Integer benCode;//状态码 是否被审核
 
-	private String username;//封装类
+	private String username;//封装类 //发布者的所有信息
 	
 	
 	

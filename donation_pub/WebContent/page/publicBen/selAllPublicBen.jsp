@@ -29,6 +29,7 @@
 	        {field:'pic',title:'展示图片',width:100,
 	        	formatter:function(value,row,index){
 	        		console.log(value);
+	        		console.log('<img src="img/'+value+'" style="width:40px;height:40px">');
 	        		return '<img src="img/'+value+'" style="width:40px;height:40px">';
 	        	}	
 	        },    
@@ -50,57 +51,89 @@
 	//格式化日期
 	function dateFormat(fmt){
 		var myDate=new Date(fmt);
-		var date=myDate.getFullYear()+"-"+myDate.getMonth()+"-"+myDate.getDate(); 
+		var a=myDate.getMonth()+1;
+		var date=myDate.getFullYear()+"-"+a+"-"+myDate.getDate(); 
 		return date;
 	}
 </script>
 <script type="text/javascript">
 		 	function updateBen(){
+		 		if($("#dg1").datagrid("getSelections").length==1){
 					//弹出窗口
 				$('#dialog').dialog({    
 				    title: '修改',    
-				    width: 400,    
-				    height: 400,    
+				    width: 600,    
+				    height: 600,    
 				    closed: false,    
 				    cache: false,    
-				    href: '',    
+				    href: 'page/publicBen/updateBen.jsp',    
 				    modal: true,
 				    onLoad:function(){
 						//将数据加载到修改框里				    
-				    	$("#name").val($("#dg").datagrid("getSelected").name);
-				    	$("#edcation").val($("#dg").datagrid("getSelected").edcation);
-				    	$("#salary").val($("#dg").datagrid("getSelected").salary);
-				    	$("#category").val($("#dg").datagrid("getSelected").category);
-				    	$("#statement").val($("#dg").datagrid("getSelected").statement);
-				    	$("#require").val($("#dg").datagrid("getSelected").require);
-				    	$("#id").val($("#dg").datagrid("getSelected").id);
-				    	$("#eid").val($("#dg").datagrid("getSelected").eid);
+				    	$("#title2").val($("#dg1").datagrid("getSelected").title);
+				    	$("#pid").val($("#dg1").datagrid("getSelected").pid);
+				    	$("#content2").val($("#dg1").datagrid("getSelected").content);
 				    }
 				    });
+		 	 }else{
+					
+				 $.messager.alert("系统信息","请选择一行")
+			 
+		 }
 			}
 		function addBen(){
+			
 				//弹出窗口
 			$('#dialog').dialog({    
-			    title: '修改',    
-			    width: 400,    
-			    height: 400,    
+			    title: '添加',    
+			    width: 600,    
+			    height: 600,    
 			    closed: false,    
 			    cache: false,    
-			    href: "page/publicBen/addBean.jsp",    
-			    modal: true,
-			    onLoad:function(){
-					//将数据加载到修改框里				    
-			    	$("#name").val($("#dg").datagrid("getSelected").name);
-			    	$("#edcation").val($("#dg").datagrid("getSelected").edcation);
-			    	$("#salary").val($("#dg").datagrid("getSelected").salary);
-			    	$("#category").val($("#dg").datagrid("getSelected").category);
-			    	$("#statement").val($("#dg").datagrid("getSelected").statement);
-			    	$("#require").val($("#dg").datagrid("getSelected").require);
-			    	$("#id").val($("#dg").datagrid("getSelected").id);
-			    	$("#eid").val($("#dg").datagrid("getSelected").eid);
-			    }
+			    href: "page/publicBen/addBen.jsp",    
+			    modal: true
 			    });
+			 
 		} 
+		function updateCode(){
+			 if($("#dg1").datagrid("getSelections").length==1){
+				 $.messager.confirm('确认','您确认想要审核吗？',function(r){ 
+					    if (r){    
+					    	var benCode=$("#dg1").datagrid("getSelected").benCode;
+					    	if(benCode==1){
+					    		swal("不能重复审核","","error");
+					    	}
+						 $.ajax({
+							 url:"updateCode",
+						 	 data:{
+						 		 "pid":$("#dg1").datagrid("getSelected").pid
+						 	 },
+						 	 dataType:"json",
+						 	 success:function(result){
+						 		 if(result==1){
+						 			$('#dg1').datagrid('reload');
+					    			$.messager.show({
+										title:'系统提示',
+										msg: "修改成功" ,
+										timeout:2000,
+										showType:'slide'
+									});
+						 		 }else{
+						 			$.messager.show({
+										title:'系统提示',
+										msg: "修改失败" ,
+										timeout:2000,
+										showType:'slide'
+									});
+						 		 }
+						 	 },
+						 });
+					}
+				 });
+			 }else{
+				 $.messager.alert("系统信息","请选择一行")
+			 }
+		}
 		</script>
 		<div id="dialog"></div>
 		<table id="dg1"></table>  

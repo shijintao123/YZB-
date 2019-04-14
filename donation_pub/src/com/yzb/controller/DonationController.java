@@ -1,25 +1,21 @@
 package com.yzb.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.yzb.pojo.Donation;
-import com.yzb.service.DonationService;
+import com.yzb.service.impl.DonationService;
 
 @Controller
 public class DonationController {
 	@Resource
-	private DonationService donationServiceImpl;
+	private DonationService donationService;
+
+/*	public String test01(){
+		//return donationServiceImpl.;
+	}*/
 	
-	
-	@RequestMapping("getdonationtable")
+	/*@RequestMapping("getdonationtable")
 //	@ResponseBody
 	public String getdonationtable(HttpSession session) {
 		List<Donation> ldonationAll = donationServiceImpl.selALLdonation();
@@ -40,5 +36,5 @@ public class DonationController {
 		Donation selDonationById = donationServiceImpl.selDonationById(Integer.parseInt(id));
 		request.setAttribute("selDonationById", selDonationById);
 		return "moredonationInformation.jsp";
-	}
+	}*/
 }

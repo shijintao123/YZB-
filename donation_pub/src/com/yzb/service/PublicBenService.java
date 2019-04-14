@@ -8,4 +8,9 @@ public interface PublicBenService {
 	int addPublicBen(PublicBen p);
 	
 	EasyUIDatagrid findAllBen(int pageSize,int pageNumber);
+
+	int updatePublicBen(int pid);
+	
+	int updatePublicAll(PublicBen ben);
+	
 }

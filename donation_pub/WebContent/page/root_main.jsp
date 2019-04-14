@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </style>
 <body class="easyui-layout">   
 	    <div data-options="region:'north'" style="height:100px;">
-	    	<div style="background:gray;text-align:center;width:100%;height:100%;"><br><div style="font-size:25px">捐助平台 </div><br><div>您好：**管理员，欢迎登陆系统!&nbsp;  <a href="#" class="easyui-linkbutton" style="background:skyblue">用户注销</a></div></div>   
+	    	<div style="background:gray;text-align:center;width:100%;height:100%;"><br><div style="font-size:25px">捐助平台 </div><br><div>您好：${user.username }管理员，欢迎登陆系统!&nbsp;  <a href="logOut2" style="background:skyblue">用户注销</a></div></div>   
 	    </div>   
 	    <div data-options="region:'south'" style="height:60px;">
 	    	<div style="text-align: center;color: gray;margin-top: 10px;" >

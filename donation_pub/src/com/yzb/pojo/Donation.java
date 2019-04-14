@@ -1,54 +1,75 @@
 package com.yzb.pojo;
 
+import java.util.Date;
+//捐助表
 public class Donation {
-	//捐赠  捐款的项目
-	private String title; //捐款的标题
-	private String pubdate;//
-	private String content;
-	private String picture;
-	private String tel;
-	private String username;
-	private int id;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getPubdate() {
-		return pubdate;
-	}
-	public void setPubdate(String pubdate) {
-		this.pubdate = pubdate;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public String getPicture() {
-		return picture;
-	}
-	public void setPicture(String picture) {
-		this.picture = picture;
-	}
-	public String getTel() {
-		return tel;
-	}
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    private Integer did;
+
+    private Integer id;
+
+    private String title;
+
+    private String content;
+
+    private String picture;
+
+    private Date pubdate;
+
+    private Integer dcode;
+
+    public Integer getDid() {
+        return did;
+    }
+
+    public void setDid(Integer did) {
+        this.did = did;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture == null ? null : picture.trim();
+    }
+
+    public Date getPubdate() {
+        return pubdate;
+    }
+
+    public void setPubdate(Date pubdate) {
+        this.pubdate = pubdate;
+    }
+
+    public Integer getDcode() {
+        return dcode;
+    }
+
+    public void setDcode(Integer dcode) {
+        this.dcode = dcode;
+    }
 }

@@ -72,6 +72,13 @@ public class UserController {
 		request.getSession().invalidate();
 		return "1";
 	}
+	//用户注销
+		@RequestMapping("logOut2")
+		public String logOut2(HttpServletRequest request){
+			//用户注销
+			request.getSession().invalidate();
+			return "redirect:home.jsp";
+		}
 	@RequestMapping("xiugai_user")
 	@ResponseBody
 	public String xiugai_user(User user,HttpSession session) {

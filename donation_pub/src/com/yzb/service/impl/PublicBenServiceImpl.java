@@ -24,5 +24,13 @@ public class PublicBenServiceImpl implements PublicBenService{
 		ed.setTotal(pbm.selAllCount());
 		return ed;
 	}
+	@Override
+	public int updatePublicBen(int pid) {
+		return pbm.updatePubliBenByPid(pid);
+	}
+	@Override
+	public int updatePublicAll(PublicBen p) {
+		return pbm.updatePublicBen(p);
+	}
 
 }
